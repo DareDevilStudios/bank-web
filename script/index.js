@@ -40,47 +40,9 @@ function faqhide() {
 
 /*Dropdown*/
 function nav() {
-    document.getElementById('ham').style.display = "inline";
-
-    document.getElementById('firstnav').style.flexDirection = "column";
-    document.getElementById('secondnav').style.flexDirection = "column";
-    document.getElementById('menu').style.flexDirection = "column";
-
-
     let menu = document.getElementById('menu');
-    if (menu.style.display === "flex") {
-        menu.style.display = "none";
-    } else {
-        menu.style.display = "flex";
-    }
-}
-
-
-
-/*transaction*/
-function transac() {
-
-    let sender = document.getElementById('name').value;
-    let accountrec = document.getElementById('accountrec').value;
-    let accountsend = document.getElementById('accountsend').value;
-    let amount = document.getElementById('amount').value;
-
-    if (sender === "") {
-        alert("Enter your Name");
-    } else if (accountrec === "") {
-        alert("Enter Your Account Number");
-    } else if (accountsend === "") {
-        alert("Enter Reciever's Account Number");
-    } else if (amount === "") {
-        alert("Enter Amount");
-    } else {
-        localStorage.setItem("sendername", sender);
-        localStorage.setItem("useraccount", accountrec);
-        localStorage.setItem("recieveraccount", accountsend);
-        localStorage.setItem("useramount", amount);
-        alert("Successfully send!");
-        window.location.href = "home.html";
-    }
+    menu.classList.toggle('hidden');
+    menu.classList.toggle('flex');
 }
 
 
@@ -105,28 +67,4 @@ function logout() {
     }
 }
 
-function send(){
-    document.getElementById('transaction').style.display = "inline"
-}
-function withdraw(){
-    document.getElementById('withdraw').style.display="block"
-    let withdrawamount=document.getElementById('draw').value
-    let amount = localStorage.getItem('amount1');
-    let newamount = parseInt(amount)-parseInt(withdrawamount)
-    if(newamount<2000){
-        alert("insufficeint balance");
-    }
-    else{
-        localStorage.setItem("amount1", newamount);
 
-    }
-
-}
-function deposit(){
-    document.getElementById('deposit').style.display="block"
-    let depositamount=document.getElementById('depo').value
-    let amount = localStorage.getItem('amount1');
-    let newamount = parseInt(amount)+parseInt(depositamount)
-    localStorage.setItem("amount1", newamount);
-
-}

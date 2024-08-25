@@ -18,51 +18,48 @@
     <div class="relative">
         <img src="../images/Abstract Design.svg" alt="" class="h-64">
         <div
-            class="absolute top-8 left-16 flex items-center space-x-4 md:space-x-64 border-lime-300 border-b-[0.5px] bg-stone-900 p-1.5 px-3 rounded-full">
+            class="md:mx-8 mx-0 absolute top-8 left-16 flex items-center space-x-4 md:space-x-64 border-lime-300 border-b-[0.5px] bg-stone-900 p-1.5 px-3 rounded-full">
             <div class="flex items-center gap-2">
                 <img src="../images/logo.png" alt="logo" width="30px" height="30px">
                 <p class="font-serif font-bold text-base text-white max-[320px]:text-sm">LV Swiss</p>
             </div>
-            <img src="../images/three line.svg" alt="" class="md:hidden block p-5 cursor-pointer" onclick="nav()"
-                id="ham">
+            <img src="../images/three line.svg" alt="" class="md:hidden block p-5" onclick="nav()" id="ham">
             <div id="menu"
-                class="z-50 md:z-0 md:gap-56 boder-white border-2  md:border-0  mt-1.5 hidden md:flex md:flex-row flex-col absolute md:static top-16 md:top-0 left-0 w-full md:w-auto bg-stone-900 md:bg-transparent p-4 md:p-0 rounded-lg md:rounded-none z-50">
+                class="hidden md:flex md:flex-row flex-col md:gap-56  border-white border-2 md:border-0 mt-1.5 absolute md:static top-16 md:top-0   w-56 md:w-auto bg-stone-900 md:bg-transparent p-4 md:p-0 rounded-lg md:rounded-none">
                 <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-8" id="firstnav">
-                    <a href="./login.html"
+                    <a href="./home.html"
                         class="font-mono font-thin hover:bg-slate-600 rounded-full text-white p-2">Home</a>
                     <a href="./transaction.html"
                         class="font-mono font-thin hover:bg-slate-600 rounded-full text-white p-2">Transactions</a>
-                    <a href="profile.html" class="font-mono font-thin hover:bg-slate-600 rounded-full text-white p-2">Profile</a>
-                    <a href="./login.html"
+                    <a href="profile.html"
+                        class="font-mono font-thin hover:bg-slate-600 rounded-full text-white p-2">Profile</a>
+                    <a href="./security.html"
                         class="font-mono font-thin hover:bg-slate-600 rounded-full text-white p-2">Security</a>
                 </div>
-                <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4" id="secondnav">
-                    <a href="./signup.html"
-                        class="font-mono font-thin hover:bg-[#CAFF33] hover:text-black rounded-full text-white p-2">Sign
-                        Up</a>
-                    <a href="./login.html"
-                        class="font-mono font-thin hover:bg-[#CAFF33] hover:text-black rounded-full text-white p-2">Login</a>
-                </div>
+                <button onclick="logout()"
+                    class="font-mono font-thin hover:bg-[#CAFF33] hover:text-black rounded-full text-white p-2"
+                    id="secondnav">Logout</button>
             </div>
         </div>
     </div>
     <!--Introduction-->
-    <div class="relative items-center justify-items-center text-center md:inset-x-0 -mt-32  ">
+    <div class="relative items-center justify-items-center text-center md:inset-x-0 mt-[100px] md:mt-8 ">
         <img src="../images/use case design left.svg" alt="" class="absolute md:left-[900px] ml-20">
         <div class="flex flex-col mt-8 justify-items-center justify-center text-center ">
             <p class="text-[#CAFF33] md:text-4xl text-3xl font-semibold text-center ">Transactions</p>
             <p class="text-stone-400 md:text-xl text-center mt-3.5 text-xl ">Welcome Back !</p>
         </div>
     </div><!--Credential Submission-->
-    <div class="flex gap-16 text-center mx-96 mt-9">
-        <button onclick="send()"
-            class="md:w-[200px] w-72 hover:bg-[#CAFF33] text-lg h-8 bg-[#262626] my-0.5 rounded-full text-white hover:text-black text-mono transition duration-300 ease-in-out transform hover:scale-105">SEND</button>
-        <button onclick="withdraw()"
+
+    <div class="md:flex md:flex-row flex-col gap-16 text-center mx-4 md:mx-96 mt-9">
+        <button onclick="toggleSection('transaction')"
+            class="md:w-[200px] w-72 hover:bg-[#CAFF33] text-lg h-8 bg-[#262626] my-0.5 rounded-full text-white hover:text-black text-mono transition duration-300 ease-in-out transform hover:scale-105">TRANSFER</button>
+        <button onclick="toggleSection('withdraw')"
             class="md:w-[200px] w-72 hover:bg-[#CAFF33] text-lg h-8 bg-[#262626] my-0.5 rounded-full text-white hover:text-black text-mono transition duration-300 ease-in-out transform hover:scale-105">WITHDRAW</button>
-        <button onclick="deposit()"
+        <button onclick="toggleSection('deposit')"
             class="md:w-[200px] w-72 hover:bg-[#CAFF33] text-lg h-8 bg-[#262626] my-0.5 rounded-full text-white hover:text-black text-mono transition duration-300 ease-in-out transform hover:scale-105">DEPOSIT</button>
     </div>
-    <div class="flex flex-col hidden mx-[450px] mt-9" id="withdraw">
+    <div class="flex flex-col hidden mx-3.5 md:mx-[450px] mt-9" id="withdraw">
         <label for="number" class="mx-5 mt-3.5 hidden">Amount</label>
         <input type="number" id="draw"
             class="border-[0.5px] placeholder-gray-500 md:w-96 w-72 bg-black border-gray-800 md:mx-5 mb-5 p-1.5 md:ml-1.5 text-white appearance-none rounded-full text-sm "
@@ -71,7 +68,7 @@
             class="md:w-[400px] w-72 hover:bg-[#CAFF33] text-lg h-8 bg-[#262626] my-0.5 rounded-full text-white hover:text-black text-mono transition duration-300 ease-in-out transform hover:scale-105">WITHDRAW</button>
 
     </div>
-    <div class="flex flex-col hidden mx-[450px] mt-9" id="deposit">
+    <div class="flex flex-col hidden mx-3.5 md:mx-[450px] mt-9" id="deposit">
         <label for="number" class="mx-5 mt-3.5 hidden">Amount</label>
         <input type="number" id="depo"
             class="border-[0.5px] placeholder-gray-500 md:w-96 w-72 bg-black border-gray-800 md:mx-5 mb-5 p-1.5 md:ml-1.5 text-white appearance-none rounded-full text-sm "
@@ -85,20 +82,12 @@
             <div class="flex gap-6 text-center ">
                 <div class="flex flex-col space-y-1.5">
                     <div class="flex md:flex-row flex-col">
-                        <label for="name" class="mx-5 mt-3.5 hidden">Sender's Name</label>
-                        <input type="text" id="name"
-                            class="border-[0.5px] placeholder-gray-500 md:w-96 w-72 bg-black border-gray-800 md:mx-5 mb-5 p-1.5 md:ml-1.5 text-white appearance-none rounded-full text-sm "
-                            placeholder="Enter Your  Name " required>
                         <label for="accountrec" class="mx-5 mt-3.5 hidden">Reciever's Account Number</label>
                         <input type="text" id="accountrec"
                             class="border-[0.5px] placeholder-gray-500 md:w-96 w-72 bg-black border-gray-800 md:mx-5 mb-5 p-1.5 md:ml-1.5 text-white appearance-none rounded-full text-sm "
                             placeholder="Enter Reciever's Account Number " required>
                     </div>
                     <div class="flex md:flex-row flex-col">
-                        <label for="accountsend" class="mx-5 hidden">Account Number</label>
-                        <input type="text" id="accountsend"
-                            class="border-[0.5px] placeholder-gray-500 md:w-96 w-72 bg-black border-gray-800 md:mx-5 mb-5 p-1.5 md:ml-1.5 text-white appearance-none rounded-full text-sm "
-                            placeholder="Enter Your Account Number" required>
                         <div class="flex gap-0.5 align-items-center relative ">
                             <input type="number" id="amount"
                                 class="border-[0.5px] placeholder-gray-500 bg-black border-gray-800 text-white md:w-96 w-72 md:mx-5 mb-5 p-1.5 md:ml-1.5 rounded-full text-sm "
@@ -114,11 +103,12 @@
                 class="md:w-[400px] w-72 hover:bg-[#CAFF33] text-lg h-8 bg-[#262626]  rounded-full text-center text-white hover:text-black text-mono my-3.5 transition duration-300 ease-in-out transform hover:scale-105">Back</a>
 
             <!--Alternatives-->
-           
+
         </div>
     </div>
+
     <!--Footer-->
-    <div class="items-center justify-center md:bg-[#1C1C1C] mt-16 ">
+    <div class="items-center justify-center bg-[#1C1C1C] mt-16">
         <div class="flex flex-col items-center justify-center ">
             <div class="flex items-center gap-0.5 mt-5">
                 <img src="../images/logo.png" alt="logo" width="30px" height="30px">
@@ -126,19 +116,19 @@
                     Swiss</p>
             </div>
 
-            <div class="flex md:space-x-8 h-fit mt-3.5 gap-1.5 ">
-                <a href="./login.html" class="font-mono font-thin hover:bg-slate-600 rounded-full text-white p-2">Home
-                </a>
-                <a href="./transaction.html" class="font-mono font-thin hover:bg-slate-600 rounded-full text-white p-2">
-                    Transactions</a>
-                <p class="font-mono font-thin hover:bg-slate-600 rounded-full text-white p-2">
+            <div class="md:flex md:flex-row flex-col md:space-x-8 space-x-0 h-auto md:h-fit mt-3.5">
+                <a href="./home.html" class="font-mono font-thin hover:bg-slate-600 rounded-full text-white p-2">Home
+                </a><br>
+                <a href="transaction.html" class="font-mono font-thin hover:bg-slate-600 rounded-full text-white p-2">
+                    Transactions</a><br>
+                <a href="./profile.html" class="font-mono font-thin hover:bg-slate-600 rounded-full text-white p-2">
                     Profile
-                </p>
-                <a href="./login.html" class="font-mono font-thin hover:bg-slate-600 rounded-full text-white p-2">
+                </a><br>
+                <a href="./security.html" class="font-mono font-thin hover:bg-slate-600 rounded-full text-white p-2">
                     Security</a>
             </div>
 
-            <div class="flex md:space-x-32 space-x-0 my-3.5 pt-3.5 flex-col md:flex-row justify-center">
+            <div class="md:flex md:flex-row flex-col md:space-x-32 space-x-0 my-3.5 pt-3.5 ">
                 <div class="flex gap-1.5 justify-center items-center">
                     <img src="../images/mail.svg" alt="">
                     <a href="https://mail.google.com/mail/u/0/#inboxhttps://www.google.com/intl/en_in/gmail/about/"
@@ -158,13 +148,16 @@
             </div>
             <hr>
             <div
-                class="flex md:flex-row flex-col items-center mt-3.5 space-y-5 md:border-gray-800 md:border-[0.5px] rounded-full px-3.5 md:py-1.5 md:space-x-72">
-                <div class="flex gap-1.5">
-                    <img src="../images/facebook.svg" alt="" width="32px" height="32px">
-                    <img src="../images/twitter.svg" alt="" width="32px" height="32px">
-                    <img src="../images/linkedin.svg" alt="" width="32px" height="32px">
+                class="md:flex md:flex-row flex-col items-center mt-3.5 border-gray-800 border-0 md:border-[0.5px] rounded-full px-3.5 py-1.5 space-x-0 md:space-y-0 space-y-2 md:space-x-72">
+                <div class="flex gap-1.5 ml-8 md:ml-0"><a href="https://www.facebook.com/TwitterInc/">
+                        <img src="../images/facebook.svg" alt="" width="32px" height="32px"></a>
+                    <a href="https://x.com/en/home"><img src="../images/twitter.svg" alt="" width="32px"
+                            height="32px"></a>
+                    <a href="https://in.linkedin.com/"><img src="../images/linkedin.svg" alt="" width="32px"
+                            height="32px">
+                    </a>
                 </div>
-                <p class="text-stone-400 text-xs font-sans">LV Swiss All
+                <p class="text-stone-400 text-xs font-sans ml-5 md:ml-0">LV Swiss All
                     Rights Reserved</p>
                 <div class="flex justify-center items-center ml-auto">
                     <p class="hover:text-[#CAFF33] text-stone-400 text-xs text-mono">
@@ -179,6 +172,6 @@
             </div>
         </div>
     </div>
-</body>
+    </di>
 
 </html>

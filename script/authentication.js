@@ -1,5 +1,18 @@
-/*Sign Up*/
 
+/*Forgot Password*/
+function forgot() {
+    const email = prompt("Enter your email");
+    let useremail = localStorage.getItem('usermail');
+    let userpass = localStorage.getItem('userpassword');
+
+    if (email !== useremail) {
+        alert("Email not found!");
+    } else {
+        alert("Your password is: " + userpass);
+    }
+}
+
+/*Sign Up*/
 
 function signup() {
     let name1 = document.getElementById('name');
@@ -73,11 +86,6 @@ function login() {
         passwordInput.placeholder = "Password is incorrect";
         passwordInput.value = '';
     } else {
-        let bankAccountNumber = localStorage.getItem(`acc_${email}`);
-        if (!bankAccountNumber) {
-            bankAccountNumber = Math.floor(Math.random() * 10000000000);
-            localStorage.setItem(`acc_${email}`, bankAccountNumber);
-        }
 
         localStorage.setItem("loginEmail", email);
         localStorage.setItem("password", password);
@@ -86,43 +94,96 @@ function login() {
     }
 }
 
-function displayProfile() {
-    const email = localStorage.getItem('usermail');
-    const accNumber = localStorage.getItem(`acc_${email}`);
-    const name = localStorage.getItem('usernamefirst');
-    const nam = localStorage.getItem('usernamelast');
-    const amount = localStorage.getItem('amount1');
-    console.log(amount);
-
-    document.getElementById('row1').innerHTML = 'Name: ' + name + " " + nam;
-    document.getElementById('row2').innerHTML = 'ACC Number: ' + accNumber;
-    document.getElementById('row3').innerHTML = 'Email id: ' + email;
-    document.getElementById('Welcome').innerHTML = "Welcome, " + name + " " + nam;
-    document.getElementById('row4').innerHTML = "Balance: " + amount;
-
+function toggleSection(sectionId) {
+    document.getElementById('transaction').style.display = 'none';
+    document.getElementById('withdraw').style.display = 'none';
+    document.getElementById('deposit').style.display = 'none';
+    document.getElementById(sectionId).style.display = 'block';
 }
+let balance = 0;
+localStorage.setItem("userbalance", balance);
+let receiverAccount = ""; // Global variable for receiver account
 
-function amounthide() {
-    const amount = document.getElementById('amountpro').value;
-    localStorage.setItem("amount1", amount);
-    displayProfile();
-    document.getElementById('amountprofile').style.display = 'none';
-    document.getElementById('amountpro').style.display = 'none';
-    document.getElementById('submitpro').style.display = 'none';
-}
+function transac() {
+    receiverAccount = document.getElementById('accountrec').value;
+    let amount = document.getElementById('amount').value;
+    if (amount !== "" && !isNaN(amount) && parseInt(amount) > 0) { // Check for valid amount
+        let currentBalance = localStorage.getItem('userbalance');
+        let newBalance = parseInt(currentBalance) - parseInt(amount);
 
-
-/*Forgot Password*/
-function forgot() {
-    const email = prompt("Enter your email");
-    let useremail = localStorage.getItem('usermail');
-    let userpass = localStorage.getItem('userpassword');
-
-    if (email !== useremail) {
-        alert("Email not found!");
+        if (newBalance < 2000) {
+            alert("Insufficient balance to send this amount.");
+            history("SEND", 0, amount);
+        } else {
+            localStorage.setItem('userbalance', newBalance);
+            alert(`Rs.${amount} sent successfully.`);
+            alert("Your balance is " + newBalance);
+            history("SEND", 1, amount);
+        }
     } else {
-        alert("Your password is: " + userpass);
+        alert("Please enter a valid amount.");
     }
 }
 
+function withdraw() {
+    const withdrawAmount = document.getElementById('draw').value;
+    let amount = localStorage.getItem('userbalance');
+    if (withdrawAmount !== "" && !isNaN(withdrawAmount) && parseInt(withdrawAmount) > 0) { // Check for valid amount
+        let newAmount = parseInt(amount) - parseInt(withdrawAmount);
 
+        if (newAmount < 2000) {
+            alert("Insufficient balance");
+            history("WITHDRAW", 0, withdrawAmount);
+        } else {
+            localStorage.setItem('userbalance', newAmount);
+            alert("Rs." + withdrawAmount + " withdrawn successfully.");
+            alert("Your balance is " + newAmount);
+            history("WITHDRAW", 1, withdrawAmount);
+        }
+    } else {
+        alert("Please enter a valid amount.");
+    }
+}
+
+function deposit() {
+    const depositAmount = document.getElementById('depo').value;
+    let amount = localStorage.getItem('userbalance');
+    if (depositAmount !== "" && !isNaN(depositAmount) && parseInt(depositAmount) > 0) { // Check for valid amount
+        let newAmount = parseInt(amount) + parseInt(depositAmount);
+        localStorage.setItem('userbalance', newAmount);
+        alert("Rs." + depositAmount + " deposited successfully.");
+        alert("Your balance is " + newAmount);
+        history("DEPOSIT", 1, depositAmount);
+    } else {
+        alert("Please enter a valid amount.");
+    }
+}
+
+function displayProfile() {
+    const email = localStorage.getItem('usermail');
+    const name = localStorage.getItem('usernamefirst');
+    const nam = localStorage.getItem('usernamelast');
+    let amount = localStorage.getItem('userbalance');
+
+    if (amount === null || amount === "") {
+        amount = "0";
+    }
+
+    document.getElementById('row1').innerHTML = 'Name: ' + name + " " + nam;
+    document.getElementById('row2').innerHTML = 'Email id: ' + email;
+    document.getElementById('row3').innerHTML = "Balance: " + amount;
+}
+
+function history(transactionType, result, transactionAmount) {
+    let amount = localStorage.getItem('userbalance');
+
+    document.getElementById('type').innerHTML = transactionType;
+    document.getElementById('money').innerHTML = transactionAmount;
+    document.getElementById('bal').innerHTML = amount;
+
+    if (transactionType === "DEPOSIT" || transactionType === "WITHDRAW") {
+        document.getElementById('accnum').innerHTML = result === 1 ? "SELF" : "FAILED";
+    } else if (transactionType === "SEND") {
+        document.getElementById('accnum').innerHTML = result === 1 ? receiverAccount : "FAILED";
+    }
+}
