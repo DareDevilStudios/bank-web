@@ -1,3 +1,7 @@
+window.onload = function () {
+    displayProfile();
+    displayTransactionHistory();
+};
 
 /*Forgot Password*/
 function forgot() {
@@ -100,70 +104,105 @@ function toggleSection(sectionId) {
     document.getElementById('deposit').style.display = 'none';
     document.getElementById(sectionId).style.display = 'block';
 }
+
 let balance = 0;
-localStorage.setItem("userbalance", balance);
-let receiverAccount = ""; // Global variable for receiver account
+function deposit() {
+    const email = localStorage.getItem('usermail'); // Get current user's email
+    const depositAmount = document.getElementById('depo').value;
 
-function transac() {
-    receiverAccount = document.getElementById('accountrec').value;
-    let amount = document.getElementById('amount').value;
-    if (amount !== "" && !isNaN(amount) && parseInt(amount) > 0) { // Check for valid amount
-        let currentBalance = localStorage.getItem('userbalance');
-        let newBalance = parseInt(currentBalance) - parseInt(amount);
+    // Initialize currentBalance to 0 if it's null
+    let currentBalance = parseInt(localStorage.getItem(`${email}_balance`)) || 0;
 
-        if (newBalance < 2000) {
-            alert("Insufficient balance to send this amount.");
-            history("SEND", 0, amount);
-        } else {
-            localStorage.setItem('userbalance', newBalance);
-            alert(`Rs.${amount} sent successfully.`);
-            alert("Your balance is " + newBalance);
-            history("SEND", 1, amount);
-        }
+    if (depositAmount !== "" && !isNaN(depositAmount) && parseInt(depositAmount) > 0) {
+        let newBalance = currentBalance + parseInt(depositAmount);
+        localStorage.setItem(`${email}_balance`, newBalance);
+        alert("Rs." + depositAmount + " deposited successfully.");
+        alert("Your balance is " + newBalance);
+        history("DEPOSIT", 1, depositAmount);
+        displayProfile(); // Update profile display with new balance
     } else {
         alert("Please enter a valid amount.");
     }
 }
 
 function withdraw() {
+    const email = localStorage.getItem('usermail'); // Get current user's email
     const withdrawAmount = document.getElementById('draw').value;
-    let amount = localStorage.getItem('userbalance');
-    if (withdrawAmount !== "" && !isNaN(withdrawAmount) && parseInt(withdrawAmount) > 0) { // Check for valid amount
-        let newAmount = parseInt(amount) - parseInt(withdrawAmount);
 
-        if (newAmount < 2000) {
-            alert("Insufficient balance");
+    // Initialize currentBalance to 0 if it's null
+    let currentBalance = parseInt(localStorage.getItem(`${email}_balance`)) || 0;
+
+    if (withdrawAmount !== "" && !isNaN(withdrawAmount) && parseInt(withdrawAmount) > 0) {
+        let newBalance = currentBalance - parseInt(withdrawAmount);
+
+        if (newBalance < 2000) {
+            alert("Insufficient balance.");
             history("WITHDRAW", 0, withdrawAmount);
         } else {
-            localStorage.setItem('userbalance', newAmount);
+            localStorage.setItem(`${email}_balance`, newBalance);
             alert("Rs." + withdrawAmount + " withdrawn successfully.");
-            alert("Your balance is " + newAmount);
+            alert("Your balance is " + newBalance);
             history("WITHDRAW", 1, withdrawAmount);
+            displayProfile(); // Update profile display with new balance
         }
     } else {
         alert("Please enter a valid amount.");
     }
 }
 
-function deposit() {
-    const depositAmount = document.getElementById('depo').value;
-    let amount = localStorage.getItem('userbalance');
-    if (depositAmount !== "" && !isNaN(depositAmount) && parseInt(depositAmount) > 0) { // Check for valid amount
-        let newAmount = parseInt(amount) + parseInt(depositAmount);
-        localStorage.setItem('userbalance', newAmount);
-        alert("Rs." + depositAmount + " deposited successfully.");
-        alert("Your balance is " + newAmount);
-        history("DEPOSIT", 1, depositAmount);
+function transac() {
+    const email = localStorage.getItem('usermail'); // Get current user's email
+    const receiverAccount = document.getElementById('accountrec').value;
+    const amount = document.getElementById('amount').value;
+
+    // Initialize currentBalance to 0 if it's null
+    let currentBalance = parseInt(localStorage.getItem(`${email}_balance`)) || 0;
+
+    if (amount !== "" && !isNaN(amount) && parseInt(amount) > 0) {
+        let newBalance = currentBalance - parseInt(amount);
+
+        if (newBalance < 2000) {
+            alert("Insufficient balance to send this amount.");
+            history("TRANSFER", 0, amount);
+        } else {
+            localStorage.setItem(`${email}_balance`, newBalance);
+            alert(`Rs.${amount} sent successfully.`);
+            alert("Your balance is " + newBalance);
+            history("TRANSFER", 1, amount);
+            displayProfile(); // Update profile display with new balance
+        }
     } else {
         alert("Please enter a valid amount.");
     }
+}
+
+function history(transactionType, result, transactionAmount) {
+    const email = localStorage.getItem('usermail'); // Get current user's email
+    let amount = localStorage.getItem(`${email}_balance`);
+    let transactionHistory = JSON.parse(localStorage.getItem(`${email}_transactionHistory`)) || [];
+
+    let transaction = {
+        type: transactionType,
+        amount: transactionAmount,
+        balance: amount,
+        accountNumber: result === 1 ? (transactionType === "TRANSFER" ? receiverAccount : "SELF") : "FAILED"
+    };
+
+    // Add the new transaction to the history array
+    transactionHistory.push(transaction);
+
+    // Store the updated transaction history back in local storage
+    localStorage.setItem(`${email}_transactionHistory`, JSON.stringify(transactionHistory));
+
+    // Display the transaction in the grid format
+    displayTransactionHistory();
 }
 
 function displayProfile() {
     const email = localStorage.getItem('usermail');
     const name = localStorage.getItem('usernamefirst');
     const nam = localStorage.getItem('usernamelast');
-    let amount = localStorage.getItem('userbalance');
+    let amount = localStorage.getItem(`${email}_balance`);
 
     if (amount === null || amount === "") {
         amount = "0";
@@ -174,16 +213,25 @@ function displayProfile() {
     document.getElementById('row3').innerHTML = "Balance: " + amount;
 }
 
-function history(transactionType, result, transactionAmount) {
-    let amount = localStorage.getItem('userbalance');
+function displayTransactionHistory() {
+    const email = localStorage.getItem('usermail'); // Get current user's email
+    let transactionHistory = JSON.parse(localStorage.getItem(`${email}_transactionHistory`)) || [];
 
-    document.getElementById('type').innerHTML = transactionType;
-    document.getElementById('money').innerHTML = transactionAmount;
-    document.getElementById('bal').innerHTML = amount;
+    // Get the container where transactions will be displayed
+    let historyContainer = document.getElementById('history-container');
+    historyContainer.innerHTML = '';  // Clear the container before adding new transactions
 
-    if (transactionType === "DEPOSIT" || transactionType === "WITHDRAW") {
-        document.getElementById('accnum').innerHTML = result === 1 ? "SELF" : "FAILED";
-    } else if (transactionType === "SEND") {
-        document.getElementById('accnum').innerHTML = result === 1 ? receiverAccount : "FAILED";
-    }
+    // Iterate through each transaction and display it in the grid
+    transactionHistory.forEach(transaction => {
+        let transactionDiv = document.createElement('div');
+        transactionDiv.className = 'transaction-item bg-gray-100 p-4 rounded-lg shadow-md';
+        transactionDiv.innerHTML = `
+            <div class="font-semibold">Type: ${transaction.type}</div>
+            <div>Amount: Rs.${transaction.amount}</div>
+            <div>Balance: Rs.${transaction.balance}</div>
+            <div>Account: ${transaction.accountNumber}</div>
+        `;
+
+        historyContainer.appendChild(transactionDiv);
+    });
 }

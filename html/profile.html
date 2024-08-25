@@ -13,7 +13,7 @@
 </head>
 
 
-<body class="bg-black" onload=" displayProfile() ">
+<body class="bg-black">
     <!--Task Bar-->
     <div class="relative">
         <img src="../images/Abstract Design.svg" alt="" class="h-64">
@@ -42,7 +42,7 @@
             </div>
         </div>
     </div>
-    <div class="md:flex md:flex-row flex-col gap-32">
+    <div class="md:flex md:flex-row flex-col gap-20">
         <div class="flex flex-col w-auto ml-0 md:ml-36 mt-8 ">
             <div class="grid grid-cols-1 gap-y-6">
                 <div class="font-bold text-3xl text-center bg-white mb-5 p-2">Profile</div>
@@ -54,20 +54,9 @@
                 <div class="text-2xl text-white bg-gray-800 p-2" id="row3">Balance: </div>
             </div>
         </div><!-- Transaction History -->
-        <div class="flex justify-center mt-10">
-            <div class="w-auto bg-gray-800 p-6 rounded-lg shadow-lg">
-                <div class="font-bold text-3xl text-center bg-white mb-5 p-2 text-black">Transaction History</div>
-                <div class="grid grid-cols-4 gap-4 bg-gray-800 text-white font-semibold text-sm">
-                    <div class="py-3 px-4 uppercase">Type</div>
-                    <div class="py-3 px-4 uppercase">Amount</div>
-                    <div class="py-3 px-4 uppercase">Balance</div>
-                    <div class="py-3 px-4 uppercase">Account Number</div>
-                </div>
-                <div id="transactionGrid" class="grid grid-cols-4 gap-4 bg-gray-900 text-white text-sm mt-4">
-                    <!-- Transaction rows will be added here dynamically -->
-                </div>
-            </div>
+        <div id="history-container" class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-7  gap-2 p-4 h-fit ">
         </div>
+
 
 
     </div>

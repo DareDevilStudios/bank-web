@@ -66,5 +66,3 @@ function logout() {
         alert("Logout cancelled.");
     }
 }
-
-
