@@ -136,7 +136,7 @@ function withdraw() {
         let newBalance = currentBalance - parseInt(withdrawAmount);
 
         if (newBalance < 2000) {
-            alert("Insufficient balance.");
+            alert("Insufficient balance to send this amount.Minimum balance Rs.2000 needed");
             history("WITHDRAW", 0, withdrawAmount);
         } else {
             localStorage.setItem(`${email}_balance`, newBalance);
@@ -162,7 +162,7 @@ function transac() {
         let newBalance = currentBalance - parseInt(amount);
 
         if (newBalance < 2000) {
-            alert("Insufficient balance to send this amount.");
+            alert("Insufficient balance to send this amount. Minimum balance Rs.2000 needed");
             history("TRANSFER", 0, amount);
         } else {
             localStorage.setItem(`${email}_balance`, newBalance);
