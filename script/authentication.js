@@ -118,7 +118,7 @@ function deposit() {
         localStorage.setItem(`${email}_balance`, newBalance);
         alert("Rs." + depositAmount + " deposited successfully.");
         alert("Your balance is " + newBalance);
-        history("DEPOSIT", 1, depositAmount);
+        history("DEPOSIT", 1, depositAmount,"SELF");
         displayProfile(); // Update profile display with new balance
     } else {
         alert("Please enter a valid amount.");
@@ -142,7 +142,7 @@ function withdraw() {
             localStorage.setItem(`${email}_balance`, newBalance);
             alert("Rs." + withdrawAmount + " withdrawn successfully.");
             alert("Your balance is " + newBalance);
-            history("WITHDRAW", 1, withdrawAmount);
+            history("WITHDRAW", 1, withdrawAmount,"SELF");
             displayProfile(); // Update profile display with new balance
         }
     } else {
@@ -168,7 +168,7 @@ function transac() {
             localStorage.setItem(`${email}_balance`, newBalance);
             alert(`Rs.${amount} sent successfully.`);
             alert("Your balance is " + newBalance);
-            history("TRANSFER", 1, amount);
+            history("TRANSFER", 1, amount,receiverAccount);
             displayProfile(); // Update profile display with new balance
         }
     } else {
@@ -176,7 +176,7 @@ function transac() {
     }
 }
 
-function history(transactionType, result, transactionAmount) {
+function history(transactionType, result, transactionAmount,receiverAccount) {
     const email = localStorage.getItem('usermail'); // Get current user's email
     let amount = localStorage.getItem(`${email}_balance`);
     let transactionHistory = JSON.parse(localStorage.getItem(`${email}_transactionHistory`)) || [];
@@ -185,7 +185,7 @@ function history(transactionType, result, transactionAmount) {
         type: transactionType,
         amount: transactionAmount,
         balance: amount,
-        accountNumber: result === 1 ? (transactionType === "TRANSFER" ? receiverAccount : "SELF") : "FAILED"
+        accountNumber: result === 1 ? receiverAccount : "FAILED"
     };
 
     // Add the new transaction to the history array
