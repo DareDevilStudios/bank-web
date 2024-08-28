@@ -5,33 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LV Swiss Bank</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="../script/index.js" defer></script>
-    <script src="../script/authentication.js" defer></script>
+    <script src="script/index.js" defer></script>
+    <script src="script/authentication.js" defer></script>
 </head>
 
 <body class="bg-black">
     <!--Task Bar-->
     <div class="relative">
-        <img src="../images/Abstract Design.svg" alt="" class="h-64">
+        <img src="images/Abstract Design.svg" alt="" class="h-64">
         <div
             class="md:mx-8 mx-0 absolute top-8 left-16 flex items-center space-x-4 md:space-x-64 border-lime-300 border-b-[0.5px] bg-stone-900 p-1.5 px-3 rounded-full">
             <div class="flex items-center gap-2">
-                <img src="../images/logo.png" alt="logo" width="30px" height="30px">
+                <img src="images/logo.png" alt="logo" width="30px" height="30px">
                 <p class="font-serif font-bold text-base text-white max-[320px]:text-sm">LV Swiss</p>
             </div>
-            <img src="../images/three line.svg" alt="" class="md:hidden block p-5" onclick="nav()" id="ham">
+            <img src="images/three line.svg" alt="" class="md:hidden block p-5" onclick="nav()" id="ham">
             <div id="menu"
                 class="hidden md:flex md:flex-row flex-col md:gap-56  border-white border-2 md:border-0 mt-1.5 absolute md:static top-16 md:top-0   w-56 md:w-auto bg-stone-900 md:bg-transparent p-4 md:p-0 rounded-lg md:rounded-none">
                 <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-8" id="firstnav">
-                    <a href="./index.html"
+                    <a href="index.html"
                         class="font-mono font-thin hover:bg-slate-600 rounded-full text-white p-2">Home</a>
-                    <a href="./transaction.html"
+                    <a href="/html/transaction.html"
                         class="font-mono font-thin hover:bg-slate-600 rounded-full text-white p-2">Transactions</a>
-                    <a href="profile.html"
+                    <a href="/html/profile.html"
                         class="font-mono font-thin hover:bg-slate-600 rounded-full text-white p-2">Profile</a>
-                    <a href="./security.html"
+                    <a href="/html/security.html"
                         class="font-mono font-thin hover:bg-slate-600 rounded-full text-white p-2">Security</a>
                 </div>
                 <button onclick="logout()"
@@ -46,7 +46,7 @@
     <div class="flex mx-8 md:mx-0 justify-center md:justify-start text-center md:text-start">
         <div class="flex flex-col space-y-6 ml-0 top-11 align-items-center  md:ml-16">
             <div class="flex bg-stone-900 md:p-1.5 p-0.5 rounded-full gap-0.5 w-max ">
-                <img src="../images/tick.svg" alt="tick">
+                <img src="images/tick.svg" alt="tick">
                 <p class="text-stone-400 w-max md:text-lg md:text-center text-base  ">No LLC
                     Required, No Credit Check.</p>
             </div>
@@ -88,20 +88,20 @@
     <div id="businesstext">
         <div class="flex space-x-44 absolute bottom-[-300px] mx-32 hidden">
             <div class="flex flex-col text-center justify-center items-center w-max">
-                <img src="../images/saving.png" alt="saving" width="61.58px" height="61.58px">
+                <img src="images/saving.png" alt="saving" width="61.58px" height="61.58px">
                 <p class="text-white font-normal font-mono ">Deposit</p>
             </div>
             <div class="flex flex-col text-center justify-center items-center w-max">
-                <img src="../images/saving.png" alt="Withdraw" width="61.58px" height="61.58px">
+                <img src="images/saving.png" alt="Withdraw" width="61.58px" height="61.58px">
                 <p class="text-white font-normal font-mono ">Withdraw</p>
             </div>
             <div class="flex flex-col text-center justify-center items-center w-max">
-                <img src="../images/bag.png" alt="Account" width="61.58px" height="61.58px"
+                <img src="images/bag.png" alt="Account" width="61.58px" height="61.58px"
                     class="justify-items-center">
                 <p class="text-white font-normal font-mono ">Account Details</p>
             </div>
             <div class="flex flex-col text-center justify-center items-center w-max">
-                <img src="../images/loan.png" alt="Balance" width="61.58px" height="61.58px"
+                <img src="images/loan.png" alt="Balance" width="61.58px" height="61.58px"
                     class="justify-items-center">
                 <p class="text-white font-normal font-mono ">View Balance</p>
             </div>
@@ -110,7 +110,7 @@
     <div class="flex flex-col md:flex md:flex-row place-content-evenly mt-5 ml-3 md:ml-16 items-center space-y-3 md:divide-x md:divide-gray-500"
         id="individualtext">
         <div class="flex flex-col text-center justify-center items-center w-max p-0.5 ">
-            <img src="../images/bag.png" alt="saving" width="61.58px" height="61.58px">
+            <img src="images/bag.png" alt="saving" width="61.58px" height="61.58px">
             <p class="text-white font-normal font-mono drop-shadow-md ">Checking Account</p>
             <p class="text-[#B3B3B3] w-[300px] md:w-[373px] text-sm  ">Enjoy easy and convenient access to your funds
                 with
@@ -119,14 +119,14 @@
             </p>
         </div>
         <div class="flex flex-col text-center justify-center items-center w-max p-0.5  ">
-            <img src="../images/saving.png" alt="Withdraw" width="61.58px" height="61.58px">
+            <img src="images/saving.png" alt="Withdraw" width="61.58px" height="61.58px">
             <p class="text-white font-normal font-mono  drop-shadow-md">Savings Account</p>
             <p class="text-[#B3B3B3] w-[300px] md:w-[373px] text-sm  ">Build your savings with our competitive interest
                 rates and flexible savings account options. Whether you're saving for a specific goal or want to grow
                 your wealth over time, we have the right account for you.</p>
         </div>
         <div class="flex flex-col text-center justify-center items-center w-max p-0.5 ">
-            <img src="../images/loan.png" alt="Account" width="61.58px" height="61.58px"
+            <img src="images/loan.png" alt="Account" width="61.58px" height="61.58px"
                 class="justify-items-center drop-shadow-md">
             <p class="text-white font-normal font-mono ">Loans and Mortages</p>
             <p class="text-[#B3B3B3] w-[300px] md:w-[373px] text-sm  ">Realize your dreams with our flexible loan and
@@ -147,7 +147,7 @@
     <div class="flex flex-col mt-11 ">
         <div class="flex flex-col md:flex md:flex-row ">
             <div class="relative ">
-                <img src="../images/use acse design.svg" alt="" class="rounded-md absolute left-0 md:left-16 top-5">
+                <img src="images/use acse design.svg" alt="" class="rounded-md absolute left-0 md:left-16 top-5">
 
                 <div
                     class="flex flex-col mx-auto md:mx-8 md:p-[20px] p-1.5 bg-[#1C1C1C] rounded-md align-items-center mt-4 w-[290px] md:w-auto ">
@@ -155,13 +155,13 @@
                     <div class="md:flex md:flex-row flex flex-col">
                         <div
                             class="bg-black flex flex-col justify-center text-center align-items-center border-[0.5px] border-gray-300 rounded-md w-[260px] mb-3.5 mt-3.5 mx-1.5 p-3.5">
-                            <img src="../images/money pouch.svg" alt="" width="64px" height="64px"
+                            <img src="images/money pouch.svg" alt="" width="64px" height="64px"
                                 class="justify-center w-full size-14">
                             <p class="text-white font-mono text-xs font-light">Managing Personal Finances</p>
                         </div>
                         <div
                             class="bg-black flex flex-col justify-center text-center align-items-center border-[0.5px] border-gray-300 rounded-md w-[260px] mb-3.5 mt-3.5 mx-1.5 p-3.5">
-                            <img src="../images/hands.svg" alt="" width="64px" height="64px"
+                            <img src="images/hands.svg" alt="" width="64px" height="64px"
                                 class="justify-center w-full size-14">
                             <p class="text-white font-mono text-xs font-light">Saving for the Future</p>
                         </div>
@@ -169,13 +169,13 @@
                     <div class="md:flex md:flex-row flex flex-col">
                         <div
                             class="bg-black flex flex-col justify-center text-center align-items-center border-[0.5px] border-gray-300 rounded-md w-[260px] mb-3.5 mt-3.5 mx-1.5 p-3.5">
-                            <img src="../images/structure.svg" alt="" width="64px" height="64px"
+                            <img src="images/structure.svg" alt="" width="64px" height="64px"
                                 class="justify-center w-full size-14">
                             <p class="text-white font-mono text-xs font-light">Homeownership</p>
                         </div>
                         <div
                             class="bg-black flex flex-col justify-center text-center align-items-center border-[0.5px] border-gray-300 rounded-md w-[260px] mb-3.5 mt-3.5 mx-1.5 p-3.5">
-                            <img src="../images/book.svg" alt="" width="64px" height="64px"
+                            <img src="images/book.svg" alt="" width="64px" height="64px"
                                 class="justify-center w-full size-14">
                             <p class="text-white font-mono text-xs font-light">Education Funding</p>
                         </div>
@@ -248,21 +248,21 @@
             </div>
             <div class="flex flex-col md:top-[5px] mt-11  bg-[#1C1C1C] w-[300px] md:w-fit rounded-md mx-auto md:mx-4 ">
                 <div class="relative">
-                    <img src="../images/use case design left.svg " alt="" class="rounded-md absolute right-0 top-0">
+                    <img src="images/use case design left.svg " alt="" class="rounded-md absolute right-0 top-0">
                     <div
                         class="flex flex-col p-3 md:p-[20px] bg-[#1C1C1C] rounded-md align-items-center mt-4 w-[200px] md:w-fit">
 
                         <div class="flex-col md:flex-row md:flex">
                             <div
                                 class="bg-black flex flex-col justify-center text-center align-items-center border-[0.5px] border-gray-300 rounded-md w-[260px] mb-3.5 mt-3.5 mx-1.5 p-3.5">
-                                <img src="../images/startup.svg" alt="" width="64px" height="64px"
+                                <img src="images/startup.svg" alt="" width="64px" height="64px"
                                     class="justify-center w-full size-14">
                                 <p class="text-white font-mono text-xs font-light">Startups and
                                     Entrepreneurs</p>
                             </div>
                             <div
                                 class="bg-black flex flex-col justify-center text-center align-items-center border-[0.5px] border-gray-300 rounded-md w-[260px] mb-3.5 mt-3.5 mx-1.5 p-3.5">
-                                <img src="../images/loan.png" alt="" width="64px" height="64px"
+                                <img src="images/loan.png" alt="" width="64px" height="64px"
                                     class="justify-center size-12 ml-20">
                                 <p class="text-white font-mono text-xs font-light">Cash Flow Management
                                 </p>
@@ -271,14 +271,14 @@
                         <div class="flex-col md:flex-row md:flex">
                             <div
                                 class="bg-black flex flex-col justify-center text-center align-items-center border-[0.5px] border-gray-300 rounded-md w-[260px] mb-3.5 mt-3.5 mx-1.5 p-3.5">
-                                <img src="../images/business expansion.svg" alt="" width="64px" height="64px"
+                                <img src="images/business expansion.svg" alt="" width="64px" height="64px"
                                     class="justify-center w-full size-14">
                                 <p class="text-white font-mono text-xs font-light">Business Expansion
                                 </p>
                             </div>
                             <div
                                 class="bg-black flex flex-col justify-center text-center align-items-center border-[0.5px] border-gray-300 rounded-md w-[260px] mb-3.5 mt-3.5 mx-1.5 p-3.5">
-                                <img src="../images/dollar.svg" alt="" width="64px" height="64px"
+                                <img src="images/dollar.svg" alt="" width="64px" height="64px"
                                     class="justify-center w-full size-14">
                                 <p class="text-white font-mono text-xs font-light">Payment Solutions</p>
                             </div>
@@ -317,7 +317,7 @@
                 <div class="flex flex-col bg-[#262626] rounded-md  p-[20px] border-[0.5px] ml-0 md:ml-3 w-72 md:w-fit">
                     <div class=" flex flex-rows items-center ml-6 gap-60 w-max">
                         <p class="text-white text-base ">24/7 Account Access</p>
-                        <img src="../images/arrow right.svg" alt="" class="md:block hidden">
+                        <img src="images/arrow right.svg" alt="" class="md:block hidden">
                     </div>
                     <p class="text-[#B3B3B3] text-sm mt-3.5 ml-6 w-56 md:w-96 md:h-16 h-28 ">Enjoy the convenience of
                         accessing your
@@ -328,7 +328,7 @@
                 <div class="flex flex-col bg-[#262626] rounded-md  p-[20px] border-[0.5px] ml-0 md:ml-3 w-72 md:w-fit">
                     <div class=" flex flex-rows items-center ml-6 gap-60 w-max">
                         <p class="text-white text-base">Mobile Banking App</p>
-                        <img src="../images/arrow right.svg" alt="" class="md:block hidden">
+                        <img src="images/arrow right.svg" alt="" class="md:block hidden">
                     </div>
                     <p class="text-[#B3B3B3] text-sm mt-3.5 ml-6 w-56 md:w-96 md:h-16 h-28">Stay connected to your
                         finances on the go with our user-friendly mobile banking app. Easily
@@ -341,7 +341,7 @@
                 <div class="flex flex-col bg-[#262626] rounded-md  p-[20px] border-[0.5px] ml-0 md:ml-3 w-72 md:w-fit">
                     <div class=" flex flex-rows items-center ml-6 gap-60 ">
                         <p class="text-white text-base">Secure Transactions</p>
-                        <img src="../images/arrow right.svg" alt="" class="md:block hidden">
+                        <img src="images/arrow right.svg" alt="" class="md:block hidden">
                     </div>
                     <p class="text-[#B3B3B3] text-sm mt-3.5 ml-6 w-56 md:w-96 md:h-16 h-28">Rest assured knowing that
                         your transactions are protected by industry-leading security measures.
@@ -352,7 +352,7 @@
                 <div class="flex flex-col bg-[#262626] rounded-md  p-[20px] border-[0.5px] ml-0 md:ml-3 w-72 md:w-fit">
                     <div class=" flex flex-rows items-center ml-6 gap-60">
                         <p class="text-white text-base">Bill Pay and Transfers</p>
-                        <img src="../images/arrow right.svg" alt="" class="md:block hidden">
+                        <img src="images/arrow right.svg" alt="" class="md:block hidden">
                     </div>
                     <p class="text-[#B3B3B3] text-sm mt-3.5 ml-6 w-56 md:w-96 md:h-16 h-28">Save time and avoid late
                         fees
@@ -504,11 +504,11 @@
         </div>
     </div><!--Testimonial Carousel-->
     <div class="gallery-wrap md:flex md:flex-row mt-32 md:ml-16 ml-1 hidden md:block">
-        <img src="../images/left.svg" alt="Back" id="back-btn" class=" mt-32 ">
+        <img src="images/left.svg" alt="Back" id="back-btn" class=" mt-32 ">
 
         <div class="gallery   ">
             <div class="flex gap-32 w-[900px]">
-                <span class="flex flex-col text-center  "><img src="../images/double quote.svg" alt="Image 1"
+                <span class="flex flex-col text-center  "><img src="images/double quote.svg" alt="Image 1"
                         class="size-9 justify-items-center ">
                     <p class="text-center text-white w-96 h-28">I recently started my own business, and YourBank has
                         been instrumental in helping me set up
@@ -516,7 +516,7 @@
                         solutions have been invaluable.</p>
                     <p class="text-[#CAFF33] mt-4 font-bold">Sara T</p>
                 </span>
-                <span class="flex flex-col text-center "><img src="../images/double quote.svg" alt="Image 1"
+                <span class="flex flex-col text-center "><img src="images/double quote.svg" alt="Image 1"
                         class="size-9 justify-center  w-full">
                     <p class="text-center text-white w-96 h-28">I recently started my own business, and YourBank has
                         been instrumental in helping me set up
@@ -524,7 +524,7 @@
                         solutions have been invaluable.</p>
                     <p class="text-[#CAFF33] mt-4 font-bold">John D</p>
                 </span>
-                <span class="flex flex-col text-center "><img src="../images/double quote.svg" alt="Image 1"
+                <span class="flex flex-col text-center "><img src="images/double quote.svg" alt="Image 1"
                         class="size-9 justify-center  w-full">
                     <p class="text-center text-white w-96 h-28">I recently started my own business, and YourBank has
                         been instrumental in helping me set up
@@ -534,7 +534,7 @@
                 </span>
             </div>
         </div>
-        <img src="../images/right.svg" alt="Next" id="next-btn">
+        <img src="images/right.svg" alt="Next" id="next-btn">
     </div><!--Conclusion-->
     <div class="flex ml-16  p-16 mt-32 align-items-center  md:block hidden">
         <div class="relative">
@@ -556,7 +556,7 @@
                 <p class="rounded-full bg-[#CAFF33] p-1.5 hover:border-2 hover:boder-white h-max w-max mt-6 ">
                     Open Account</p>
             </div>
-            <img src="../images/use acse design.svg" alt="" class="absolute -left-8 -top-11">
+            <img src="images/use acse design.svg" alt="" class="absolute -left-8 -top-11">
         </div>
     </div>
     </div>
@@ -564,7 +564,7 @@
     <div class="items-center justify-center bg-[#1C1C1C] mt-16">
         <div class="flex flex-col items-center justify-center ">
             <div class="flex items-center gap-0.5 mt-5">
-                <img src="../images/logo.png" alt="logo" width="30px" height="30px">
+                <img src="images/logo.png" alt="logo" width="30px" height="30px">
                 <p class="font-serif font-bold text-base text-white">LV
                     Swiss</p>
             </div>
@@ -583,18 +583,18 @@
 
             <div class="md:flex md:flex-row flex-col md:space-x-32 space-x-0 my-3.5 pt-3.5 ">
                 <div class="flex gap-1.5 justify-center items-center">
-                    <img src="../images/mail.svg" alt="">
+                    <img src="images/mail.svg" alt="">
                     <a href="https://mail.google.com/mail/u/0/#inboxhttps://www.google.com/intl/en_in/gmail/about/"
                         class="text-sm text-stone-400 font-mono">
                         hello@skillbirdge.com</a>
                 </div>
                 <div class="flex gap-1.5 justify-center items-center w-max">
-                    <img src="../images/phone.svg" alt="">
+                    <img src="images/phone.svg" alt="">
                     <p class="text-sm text-stone-400 font-mono w-max">
                         +9191813232309</p>
                 </div>
                 <div class="flex gap-1.5 justify-center items-center w-max">
-                    <img src="../images/location.svg" alt="">
+                    <img src="images/location.svg" alt="">
                     <p class="text-sm text-stone-400 font-mono w-max">
                         Swissland</p>
                 </div>
@@ -603,10 +603,10 @@
             <div
                 class="md:flex md:flex-row flex-col items-center mt-3.5 border-gray-800 border-0 md:border-[0.5px] rounded-full px-3.5 py-1.5 space-x-0 md:space-y-0 space-y-2 md:space-x-72">
                 <div class="flex gap-1.5 ml-8 md:ml-0"><a href="https://www.facebook.com/TwitterInc/">
-                        <img src="../images/facebook.svg" alt="" width="32px" height="32px"></a>
-                    <a href="https://x.com/en/home"><img src="../images/twitter.svg" alt="" width="32px"
+                        <img src="images/facebook.svg" alt="" width="32px" height="32px"></a>
+                    <a href="https://x.com/en/home"><img src="images/twitter.svg" alt="" width="32px"
                             height="32px"></a>
-                    <a href="https://in.linkedin.com/"><img src="../images/linkedin.svg" alt="" width="32px"
+                    <a href="https://in.linkedin.com/"><img src="images/linkedin.svg" alt="" width="32px"
                             height="32px">
                     </a>
                 </div>
